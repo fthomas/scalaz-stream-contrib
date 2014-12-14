@@ -20,7 +20,8 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalaz.stream" %% "scalaz-stream" % "0.6a"
+  "org.scalaz.stream" %% "scalaz-stream" % "0.6a",
+  "org.scalacheck" %% "scalacheck" % "1.12.1" % "test"
 )
 
 resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
