@@ -13,4 +13,5 @@ object numericC {
 
   def product[N](implicit N: Numeric[N]): Process1[N, N] =
     fold(N.one)(N.times)
+
 }
