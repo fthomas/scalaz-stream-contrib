@@ -1,4 +1,4 @@
-name := "streamz-contrib"
+name := "scalaz-stream-contrib"
 
 version := "0.0.0"
 
@@ -31,5 +31,5 @@ initialCommands := """
   import scalaz.Scalaz._
   import scalaz.concurrent.Task
   import scalaz.stream._
-  import eu.timepit.streamz.contrib._
+  import eu.timepit.scalaz.stream.contrib._
 """

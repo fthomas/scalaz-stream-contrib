@@ -1,11 +1,13 @@
-package eu.timepit.streamz.contrib
+package eu.timepit.scalaz.stream.contrib
 
+import scalaz.\/._
 import scalaz.stream.Process._
-import scalaz.stream._
+import scalaz.stream.Process1
+import scalaz.stream.process1._
 import scalaz.syntax.equal._
-import scalaz.{Equal, ISet, Order}
+import scalaz.{Equal, ISet, Order, \/}
 
-object process1 {
+object process1C {
 
   def defaultDistinct[A]: Process1[A, A] =
     defaultDistinctBy(identity)
@@ -44,5 +46,8 @@ object process1 {
       }
     go(List.empty)
   }
+
+  def partition[A](p: A => Boolean): Process1[A, A \/ A] =
+    lift(a => if (p(a)) right(a) else left(a))
 
 }
