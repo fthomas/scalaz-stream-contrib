@@ -24,9 +24,12 @@ scalacOptions ++= Seq(
 )
 
 scalacOptions in (Compile, doc) ++= Seq(
+  "-diagrams",
   "-doc-source-url", scmInfo.value.get.browseUrl + "/tree/master€{FILE_PATH}.scala",
   "-sourcepath", baseDirectory.in(LocalRootProject).value.getAbsolutePath
 )
+
+autoAPIMappings := true
 
 libraryDependencies ++= Seq(
   "org.scalaz.stream" %% "scalaz-stream" % "0.6a",
@@ -49,3 +52,5 @@ initialCommands := """
 seq(bintraySettings:_*)
 
 publishMavenStyle := true
+
+wartremoverErrors ++= Warts.allBut(Wart.Any, Wart.Nothing)
