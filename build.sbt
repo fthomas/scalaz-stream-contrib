@@ -1,6 +1,10 @@
 name := "scalaz-stream-contrib"
 
-version := "0.0.0-SNAPSHOT"
+organization := "eu.timepit"
+
+version := "0.0.0"
+
+licenses += "MIT" -> url("http://opensource.org/licenses/MIT")
 
 scalaVersion := "2.11.4"
 
@@ -41,3 +45,7 @@ initialCommands := """
   import scalaz.stream._
   import eu.timepit.scalaz.stream.contrib._
 """
+
+seq(bintraySettings:_*)
+
+publishMavenStyle := true
