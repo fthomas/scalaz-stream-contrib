@@ -11,7 +11,7 @@ import scalaz.{==>>, Order}
  * counts over data streams. In Proceedings of the 28th international
  * conference on Very Large Data Bases (VLDB '02). VLDB Endowment 346-357.
  *
- * @see http://dl.acm.org/citation.cfm?id=1287369.1287400
+ * @see [[http://dl.acm.org/citation.cfm?id=1287369.1287400]]
  */
 object LossyCounting {
 

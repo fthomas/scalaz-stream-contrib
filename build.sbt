@@ -19,12 +19,20 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard"
 )
 
+scalacOptions in (Compile, doc) ++= Seq(
+  "-doc-source-url", scmInfo.value.get.browseUrl + "/tree/master€{FILE_PATH}.scala",
+  "-sourcepath", baseDirectory.in(LocalRootProject).value.getAbsolutePath
+)
+
 libraryDependencies ++= Seq(
   "org.scalaz.stream" %% "scalaz-stream" % "0.6a",
   "org.scalacheck" %% "scalacheck" % "1.12.1" % "test"
 )
 
 resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
+
+scmInfo := Some(ScmInfo(url("https://github.com/fthomas/scalaz-stream-contrib"),
+  "git@github.com:fthomas/scalaz-stream-contrib.git"))
 
 initialCommands := """
   import scalaz._
