@@ -53,4 +53,4 @@ seq(bintraySettings:_*)
 
 publishMavenStyle := true
 
-wartremoverErrors ++= Warts.allBut(Wart.Any, Wart.Nothing)
+wartremoverErrors in (Compile, compile) ++= Warts.allBut(Wart.Any, Wart.Nothing)

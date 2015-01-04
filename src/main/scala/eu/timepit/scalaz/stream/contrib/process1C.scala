@@ -50,4 +50,7 @@ object process1C {
   def partition[A](p: A => Boolean): Process1[A, A \/ A] =
     lift(a => if (p(a)) right(a) else left(a))
 
+  def tail[A]: Process1[A, A] =
+    receive1(_ => id)
+
 }

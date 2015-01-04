@@ -51,8 +51,8 @@ object LossyCounting {
         val n = table.total + 1
         val b = bucketId(n)
 
-        val pruned = if (n % width == 0) table.prune(b) else table
-        val updated = pruned.insert(a, b - 1)
+        val maybePruned = if (n % width == 0) table.prune(b) else table
+        val updated = maybePruned.insert(a, b - 1)
         emit(updated) ++ go(updated)
       }
     go(FreqTable.empty[A](error))
