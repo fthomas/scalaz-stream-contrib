@@ -2,7 +2,7 @@ package eu.timepit.scalaz.stream.contrib
 
 import scalaz.\/._
 import scalaz.stream.Process._
-import scalaz.stream.Process1
+import scalaz.stream.{Process, Process1}
 import scalaz.stream.process1._
 import scalaz.syntax.equal._
 import scalaz.{Equal, ISet, Order, \/}
@@ -46,6 +46,15 @@ object process1C {
     if (n <= I.zero) halt
     else await1[A] ++ genericTake(n - I.one)
   }
+
+  def insert[A: Order](a: A): Process1[A, A] =
+    insertBy(Order[A].lessThanOrEqual)(a)
+
+  def insertBy[A](f: (A, A) => Boolean)(a: A): Process1[A, A] =
+    receive1Or[A, A](emit(a)) { a2 =>
+      if (f(a, a2)) Process(a, a2) ++ id
+      else emit(a2) ++ insertBy(f)(a)
+    }
 
   def nub[A: Equal]: Process1[A, A] =
     nubBy(_ === _)
