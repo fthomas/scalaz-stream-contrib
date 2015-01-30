@@ -35,6 +35,18 @@ object process1C {
     go(ISet.empty)
   }
 
+  def genericDrop[A, I](n: I)(implicit I: Integral[I]): Process1[A, A] = {
+    import I._
+    if (n <= I.zero) id
+    else skip ++ genericDrop(I.minus(n, I.one))
+  }
+
+  def genericTake[A, I](n: I)(implicit I: Integral[I]): Process1[A, A] = {
+    import I._
+    if (n <= I.zero) halt
+    else await1[A] ++ genericTake(n - I.one)
+  }
+
   def nub[A: Equal]: Process1[A, A] =
     nubBy(_ === _)
 

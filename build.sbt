@@ -6,7 +6,7 @@ version := "0.0.0"
 
 licenses += "MIT" -> url("http://opensource.org/licenses/MIT")
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.5"
 
 scalacOptions ++= Seq(
   "-deprecation",
