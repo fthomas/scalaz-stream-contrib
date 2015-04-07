@@ -1,7 +1,7 @@
 package eu.timepit.scalaz.stream.contrib
 
 import java.nio.file.attribute.FileAttribute
-import java.nio.file.{Files, Path}
+import java.nio.file.{ Files, Path }
 
 import scalaz.concurrent.Task
 import scalaz.stream.Process

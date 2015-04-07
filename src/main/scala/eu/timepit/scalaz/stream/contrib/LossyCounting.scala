@@ -2,7 +2,7 @@ package eu.timepit.scalaz.stream.contrib
 
 import scalaz.stream.Process._
 import scalaz.stream.Process1
-import scalaz.{==>>, Order}
+import scalaz.{ ==>>, Order }
 
 /**
  * An implementation of the Lossy Counting algorithm as described in [1].

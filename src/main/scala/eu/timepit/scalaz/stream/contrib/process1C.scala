@@ -2,10 +2,10 @@ package eu.timepit.scalaz.stream.contrib
 
 import scalaz.\/._
 import scalaz.stream.Process._
-import scalaz.stream.{Process, Process1}
+import scalaz.stream.{ Process, Process1 }
 import scalaz.stream.process1._
 import scalaz.syntax.equal._
-import scalaz.{Equal, ISet, Order, \/}
+import scalaz.{ Equal, ISet, Order, \/ }
 
 object process1C {
 
