@@ -6,7 +6,7 @@ version := "0.0.0"
 
 licenses += "MIT" -> url("http://opensource.org/licenses/MIT")
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.6"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -32,7 +32,8 @@ scalacOptions in (Compile, doc) ++= Seq(
 autoAPIMappings := true
 
 libraryDependencies ++= Seq(
-  "org.scalaz.stream" %% "scalaz-stream" % "0.6a",
+  "org.scalaz.stream" %% "scalaz-stream" % "0.7a",
+  "com.nicta" %% "rng" % "1.3.0",
   "org.scalacheck" %% "scalacheck" % "1.12.1" % "test"
 )
 
