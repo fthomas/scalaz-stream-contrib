@@ -36,15 +36,13 @@ object process1C {
   }
 
   def genericDrop[A, I](n: I)(implicit I: Integral[I]): Process1[A, A] = {
-    import I._
-    if (n <= I.zero) id
-    else skip ++ genericDrop(n - I.one)
+    if (I.lteq(n, I.zero)) id
+    else skip ++ genericDrop(I.minus(n, I.one))
   }
 
   def genericTake[A, I](n: I)(implicit I: Integral[I]): Process1[A, A] = {
-    import I._
-    if (n <= I.zero) halt
-    else await1[A] ++ genericTake(n - I.one)
+    if (I.lteq(n, I.zero)) halt
+    else await1[A] ++ genericTake(I.minus(n, I.one))
   }
 
   def insert[A: Order](a: A): Process1[A, A] =

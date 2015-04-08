@@ -50,7 +50,7 @@ initialCommands := """
   import eu.timepit.scalaz.stream.contrib._
 """
 
-seq(bintraySettings:_*)
+bintraySettings
 
 publishMavenStyle := true
 
