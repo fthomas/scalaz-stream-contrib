@@ -34,7 +34,7 @@ autoAPIMappings := true
 libraryDependencies ++= Seq(
   "org.scalaz.stream" %% "scalaz-stream" % "0.7a",
   "com.nicta" %% "rng" % "1.3.0",
-  "org.scalacheck" %% "scalacheck" % "1.12.1" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
 )
 
 resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
