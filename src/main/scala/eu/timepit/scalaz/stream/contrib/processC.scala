@@ -1,10 +1,10 @@
 package eu.timepit.scalaz.stream.contrib
 
 import scalaz.Scalaz._
+import scalaz.\/
 import scalaz.stream.Cause.Error
 import scalaz.stream.Process
 import scalaz.stream.Process._
-import scalaz.{ Bind, \/ }
 
 object processC {
 
@@ -15,13 +15,8 @@ object processC {
     def toStream: Stream[O] = {
       def go(p: Process[Id, O]): Stream[O] =
         p.step match {
-          case s: Step[Id, O] =>
-            s.head match {
-              case Emit(os) =>
-                os.toStream #::: go(s.next.continue)
-              case Await(req, rcv) =>
-                Bind[Id].bind(req)(o => go(rcv(\/.right(o)).run +: s.next))
-            }
+          case Step(Emit(os), next) => os.toStream #::: go(next.continue)
+          case Step(Await(req, rcv), next) => go(rcv(\/.right(req)).run +: next)
           case Halt(Error(rsn)) => throw rsn
           case Halt(_) => Stream.empty
         }
