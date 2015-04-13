@@ -1,8 +1,8 @@
+enablePlugins(GitVersioning)
+
 name := "scalaz-stream-contrib"
 
 organization := "eu.timepit"
-
-version := "0.0.0"
 
 licenses += "MIT" -> url("http://opensource.org/licenses/MIT")
 
@@ -58,4 +58,4 @@ wartremoverErrors in (Compile, compile) ++= Warts.allBut(Wart.Any, Wart.Nothing)
 
 scalariformSettings
 
-addCommandAlias("republish", ";bintray::unpublish;publish")
+git.baseVersion := "master"
