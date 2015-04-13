@@ -5,7 +5,7 @@ import com.nicta.rng.Rng
 import scalaz.concurrent.Task
 import scalaz.stream.Process
 import scalaz.stream.Process._
-import scalaz.{ Catchable, \/, ~> }
+import scalaz.~>
 
 object rng {
   def boolean: Process[Rng, Boolean] =
@@ -31,11 +31,5 @@ object rng {
   val rngToTask: Rng ~> Task = new ~>[Rng, Task] {
     def apply[A](rng: Rng[A]): Task[A] =
       Task.delay(rng.run.unsafePerformIO())
-  }
-
-  implicit val rngCatchable: Catchable[Rng] = new Catchable[Rng] {
-    def fail[A](err: Throwable): Rng[A] = ???
-
-    def attempt[A](f: Rng[A]): Rng[Throwable \/ A] = f.map(\/.right)
   }
 }
