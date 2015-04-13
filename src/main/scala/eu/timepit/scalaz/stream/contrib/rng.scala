@@ -11,6 +11,9 @@ object rng {
   def boolean: Process[Rng, Boolean] =
     repeatEval(Rng.boolean)
 
+  def char: Process[Rng, Char] =
+    repeatEval(Rng.char)
+
   def int: Process[Rng, Int] =
     repeatEval(Rng.int)
 
