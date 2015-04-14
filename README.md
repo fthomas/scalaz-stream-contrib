@@ -8,5 +8,5 @@
 ```scala
 resolvers += "Frank's Bintray" at "https://dl.bintray.com/fthomas/maven"
 
-libraryDependencies += "eu.timepit" %% "scalaz-stream-contrib" % "master-[git hash]"
+libraryDependencies += "eu.timepit" %% "scalaz-stream-contrib" % "<version>"
 ```
