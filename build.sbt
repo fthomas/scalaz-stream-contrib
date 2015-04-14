@@ -58,4 +58,4 @@ wartremoverErrors in (Compile, compile) ++= Warts.allBut(Wart.Any, Wart.Nothing)
 
 scalariformSettings
 
-git.baseVersion := "master"
+git.useGitDescribe := true
